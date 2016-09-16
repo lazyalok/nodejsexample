@@ -1,0 +1,337 @@
+<html>
+	<head>
+		<title>Thoughts123</title>
+		<link rel="stylesheet" href="../all-js-and-css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="../css/common.css"/>
+		<script type="text/javascript" src="all-js-and-css/jquery.min.js"></script>
+		<script type="text/javascript" src="all-js-and-css/jquery-ui.min.js"></script>
+		<script src="all-js-and-css/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular-animate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+		<script src="all-js-and-css/bootstrap-filestyle.min.js"></script>
+
+		<script src="../jsown/HomePagePolling.js"></script>
+		
+		<script src="../jsown/angularPostModule.js"></script>
+		<script src="../jsown/FirstTimeDialogue.js"></script>
+		<script src="../jsown/searchModule.js"></script>
+		<script src="../jsown/TagPage.js"></script>
+		<script src="../jsown/route.js"></script>
+		<script src="../jsown/homepage.js"></script>
+		<script src="../jsown/HomePagePost.js"></script>
+		<script src="../jsown/ProfilePage.js"></script>
+		
+		
+
+		<script src="http://tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+
+		<script>
+			function browseImage() {
+				// alert(" ddd ");
+				$(".uploader-over-post-overlay").show();
+				$(".uploader-over-post").show();
+			}
+		</script>
+
+	</head>
+	<body ng-app="MyApp">
+		<div ng-include src="'header'"></div>
+
+		<!--Main Container Start-->
+		<div class="container" ng-init="initHomePage()"  ng-controller="postMyInvent">
+
+			<div class="page-header"></div>
+			<!--Row Start-->
+			<div class="row">
+
+				<!--Left Row -->
+
+				<div class="col-xs-6 col-md-3" id="lft-cont">
+					<!--Left Row Start-->
+					<p></p>
+					<p></p>
+					<p>
+						<strong class="tag-label-fav">Favourite Tags</strong><span style="margin-left:2%"><span id="edit-tag" class="fa fa-pencil-square-o fa-sm pointer" data-toggle="tooltip" data-placement="bottom" title="Edit Tag" ng-click="editTagClick()"></span></span>
+					</p>
+
+					<div  ng-switch on="manageTagStatus">
+						<span id="manage-dropdown1" class=" icon-mng pointer search-dropdown-tag"  ng-switch-when="manageTag" >
+							<ul id="tag-dropdown2 " class="designul">
+
+								<input type="text" class="form-control input-sm" placeholder="Search Tags" name="manage-src" id="manage-src" ng-keyup="manageTagSearch()"/>
+
+								<li class="manage-tag-li" ng-repeat="(key, value) in myManageTagList" ng-click="manageTagSelect(key)">
+									{{key}}
+								</li>
+
+							</ul> </span>
+					</div>
+					<p class="tag-name-fav"  ng-repeat="(key, value)  in myTagList">
+						<span class="pointer" ng-click="loadTagPage(key)">{{key}}</span><span class="fa fa-times cancel-tag cross pointer" ng-click="removeTagMyTagList(key)"></span>
+					</p>
+
+				</div><!--Left Row End-->
+
+				<ng-view></ng-view>
+
+				<!--Right row-->
+				<div class="col-xs-6 col-md-3" >
+					<div style="margin-top: 7px;">
+						<strong class="gray-title">Top Trending Talents</strong>
+						<br>
+						<div style="margin-top:2%">
+							<p class="margin0x">
+								<a>Rakhi Sawant cooked food with mirchi</a>
+							</p>
+							<p class="margin0x">
+								<a>Nawazuddin Siddique can dance.. </a>
+							</p>
+							<p class="margin0x">
+								<a>Salman new talent..singing</a>
+							</p>
+						</div>
+					</div>
+
+					<!-- Talent Post Start -->
+					<div id="postDialogue">
+						<!-- Button trigger modal -->
+						<button type="button" style="border: double;width: 72%; margin-top :40px; margin-bottom :20px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal" ng-click="lestInvent()">
+							Post your Talent
+						</button>
+
+						<!-- set up the modal to start hidden and fade in and out -->
+						<div id="myModal" class="modal fade">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<!-- dialog body -->
+									<div class="modal-body">
+
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset()">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel" style="color: #676767">Post Your Talent..<span class="fa fa-lightbulb-o fa-sm"></span></h4>
+										</div>
+
+										<br>
+										<div class="animate-switch-container  slide1 " ng-switch on="select">
+
+											<div class="animate-switch invnt-slide1" ng-switch-when="default" >
+												<input type="text" class="form-control"   ng-model="user.invention" placeholder= "What is your Talent About..!!">
+
+												<!--  <div class="txttoolbar"><ul style="list-style:disc"><li><strong class="white pointer">B</strong></li><li><strong ><i class="white pointer">I</i></strong></li><li><i class=" pointer white fa fa-file-image-o"></i></li></ul></div> -->
+
+												<br>
+												<div ng-non-bindable>
+													<textarea id="inputtxt1" class="inputtxtC1" ></textarea>
+													<script type="text/javascript">
+														tinymce.init({
+															selector : "textarea",
+															theme : "modern",
+															menubar : false,
+															plugins : ["advlist autolink lists link image charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen", "insertdatetime media nonbreaking save table contextmenu directionality", "emoticons template paste textcolor colorpicker textpattern imagetools"],
+															toolbar1 : "bold italic | bullist numlist",
+															height : 274,
+															resize : false,
+															statusbar : false
+
+														});
+
+														$('.mce-flow-layout').append('<span class="custm-img-icon" onClick="browseImage()"><i class="mce-ico mce-i-image" style="cursor:pointer; padding:1%;"></i></span>');
+														$(":file").filestyle({
+															input : false
+														});
+														$('.mce-open').remove();
+													</script>
+												</div>
+
+												<!--upload image start-->
+												<div class="uploader-over-post-overlay"></div>
+
+												<div class=" uploader-over-post modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" ng-click="closeUploadImgBox()">
+															<span aria-hidden="true">&times;</span>
+														</button>
+														<h4 class="modal-title" id="myModalLabel" style="color: #676767">Upload Image</h4>
+
+													</div>
+
+													<div class="uploader-over-post-contianer">
+														<div class="col-md-12">
+															<!--start-->
+
+															<form id="uploadImg" method="post" enctype="multipart/form-data" action="api/photos" target="upload_iframe" >
+																<input type="file" name="photo" class="filestyle" data-input="false"  style="clear: both; float: left;"  onChange="angular.element(this).scope().changeImgUpload()"/>
+
+															</form>
+															<div  id="someDiv"></div>
+
+															<!--end -->
+														</div>
+
+														<div class="col-md-12">
+															<div class="padding1">
+																<iframe  height="182px"  width="260px" name="upload_iframe" src="" id="upload_iframe"></iframe>
+															</div>
+														</div>
+
+													</div>
+
+													<div class="modal-footer">
+														<!--
+														<button type="button" class="btn  btn-default" ng-click="upload()">
+														Upload
+														</button>-->
+
+														<i class="checked-upload pointer fa fa-check-circle" ng-click="successUpload()"></i>
+													</div>
+
+												</div>
+												<!--upload image end-->
+												<!-- <div class="uploadFile2"><img  src="https://lh4.googleusercontent.com/-p3oAuZFd7aA/AAAAAAAAAAI/AAAAAAAAAAA/cfWpSS0geIk/photo.jpg"  height="100px"  width="100px"> </div> -->
+
+												<div class="rows result-input" style="display: none;">
+													<div class="col-md-12">
+
+														<div>
+															<label class="control-label">Upload Images</label>
+
+															<!--start-->
+
+															<form id="uploadImg" method="post" enctype="multipart/form-data" action="api/photos" target="upload_iframe" >
+																<input type="file" name="photo" class="filestyle" data-input="false"  style="clear: both; float: left;" onChange="angular.element(this).scope().changeImgUpload()"/>
+
+															</form>
+															<div  id="someDiv"></div>
+
+															<!--end -->
+														</div>
+													</div>
+
+													<!--
+													<div class="col-md-6">
+													<label class="control-label">Upload Video</label><i class="fa fa-hand-o-down margin-left2"></i>
+													<input type="text" class="form-control" id="youtubeLink" ng-model="youtubeLink" placeholder= "Paste Youtube link here..!!" ng-change="changeVideoLink()">
+
+													</div>
+													-->
+
+												</div>
+
+												<div class="rows  result-output" style="display: none;">
+
+													<div class="col-md-12">
+														<div class="padding">
+															<iframe  height="182px"  width="260px" name="upload_iframe" src="" id="upload_iframe"></iframe>
+														</div>
+													</div>
+
+													<div class="col-md-6">
+														<div my-youtube code="code"></div>
+													</div>
+
+												</div>
+
+											</div>
+
+											<div class="animate-switch invnt-slide2" ng-switch-when="tags" >
+
+												<div id="tagsearchselect">
+
+													<span class="selecttag"  ng-repeat="(key, value)  in totalTagSelected">{{key}}<span class="fa fa-times cancel-tag" ng-click="removeTag(key)"></span></span>
+
+												</div>
+
+												<input type="text" class=" form-control" ng-model="user.tags"  value="" placeholder= {{postInv2}}  id="tagsearch" ng-keyup="tagSearch()" >
+
+											</div>
+
+											<div class="animate-switch invnt-slide3" ng-switch-when="review" >
+												<input type="text" class=" form-control " ng-model="user.review" value={{myValue3}} placeholder= {{postInv3}} >
+											</div>
+
+										</div>
+										<div  ng-switch on="tagstatus">
+											<span id="tag-dropdown1" class=" icon-mng pointer search-dropdown"  ng-switch-when="tagfound" >
+												<ul id="tag-dropdown2 " class="designul">
+
+													<li  ng-repeat="(key, value) in searchtagMap">
+														<a  class ="taghash"   ng-click="getTagInfo(key, value)">{{key}}</a>
+													</li>
+
+												</ul> </span>
+											<span id="tag-dropdown1" class=" icon-mng pointer search-dropdown"  ng-switch-when="tagnotfound">
+												<ul id="tag-dropdown2 " class="designul">
+													<li>
+														<span class="crttag-container"></span><span class="selecttag crttag" ng-bind="user.tags"></span>
+														<button class="crttagbtn btn btn-default" type="submit" title="Create Tag" ng-click="createTag()">
+															Create Tag<i class="fa fa-check-circle-o mrgnleft8"></i>
+														</button><span></span>
+													</li>
+												</ul> </span>
+
+										</div>
+									</div>
+									<!-- dialog buttons -->
+									<div  ng-switch on="btnOption"  >
+										<div ng-switch-when="next1"  >
+											<div class="modal-footer">
+												<button type="button"  class="btn btn-primary" ng-click="next1(user)">
+													Next1
+												</button>
+											</div>
+										</div>
+										<div ng-switch-when="next2"  >
+											<div class="modal-footer">
+												<button type="button"  class="btn btn-primary" ng-click="next2(user)">
+													Next2
+												</button>
+											</div>
+										</div>
+										<div ng-switch-when="submit"  >
+											<div class="modal-footer">
+												<button type="button"  class="btn btn-primary" ng-click="submit(user)">
+													Submit
+												</button>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!-- Talent Post End -->
+
+						<!--Appreciation start-->
+						<div style="margin-top: 34px;">
+							<strong class="gray-title">Most Appreciated Talents</strong>
+							<br>
+							<div style="margin-top:2%">
+								<p><img id="profImgLogo" class="img-responsive float-left w33 img-circle" src=" https://lh4.googleusercontent.com/-p3oAuZFd7aA/AAAAAAAAAAI/AAAAAAAAAAA/cfWpSS0geIk/photo.jpg"><a class="margin-left5">Bear Grylls</a>
+								</p>
+								<p><img id="profImgLogo" class="img-responsive float-left w33 img-circle" src=" https://lh4.googleusercontent.com/-p3oAuZFd7aA/AAAAAAAAAAI/AAAAAAAAAAA/cfWpSS0geIk/photo.jpg"><a class="margin-left5">Abhinav Jain</a>
+								</p>
+								<p><img id="profImgLogo" class="img-responsive float-left w33 img-circle" src=" https://lh4.googleusercontent.com/-p3oAuZFd7aA/AAAAAAAAAAI/AAAAAAAAAAA/cfWpSS0geIk/photo.jpg"><a class="margin-left5">Amit Grover</a>
+								</p>
+								<p><img id="profImgLogo" class="img-responsive float-left w33 img-circle" src=" https://lh4.googleusercontent.com/-p3oAuZFd7aA/AAAAAAAAAAI/AAAAAAAAAAA/cfWpSS0geIk/photo.jpg"><a class="margin-left5">Rakhi Sawant</a>
+								</p>
+							</div>
+						</div>
+						<!--Appreciation end-->
+						<!-- 	 {{whatsTranding}} -->
+
+					</div>
+
+				</div>
+				<!--row end-->
+			</div>
+
+		</div>
+		<!--container end-->
+
+	</body>
+</html>

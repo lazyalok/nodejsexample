@@ -1,0 +1,169 @@
+<div class="page-header">
+	<h1></h1>
+
+</div>
+<div class="row">
+	<div class="col-xs-6 col-md-3" id="lft-cont"></div>
+	<div class="col-xs-6 col-md-6  container-main" id="container-mainid">
+		<p>
+			<b>Shah Rukh Khan</b>
+			<br>
+			Sharukh Khan was born on 2 November 1965 in New Delhi, India. He married Gauri Khan on 25 October 1991.
+			<div class="additionalOpt">
+				<i class="fa fa-thumbs-up"></i><span class="numberAppriciate">129</span><i class="share fa fa-share-square-o"></i>
+			</div>
+		</p>
+		<p>
+			<b>Amitabh Bachchan</b>
+			<br>
+			Amitabh Harivansh Bachchan  born 11 October 1942) is an Indian film actor. He first gained popularity in the early 1970s for movies like Deewar and Zanjeer, and was dubbed India's first "angry young man" for his on-screen roles in Bollywood. He has since appeared in over 180 Indian films in a career spanning more than four decades.[3][4] Bachchan is widely regarded as one of the greatest and most influential actors in the history of Indian cinema.[5][6][7] So total was his dominance of the movie scene in the 1970s and 1980s that the French director François Truffaut called him a "one-man industry.
+			<div style=" height: 26px; border-bottom: 1px solid #E8E8E8;">
+				<i class="thumbs fa fa-thumbs-up"></i><span style="">156</span><i class="fa fa-share-square-o"></i>
+			</div>
+		</p>
+		<p>
+			<b>Vinay Pathak</b>
+			<br>
+			Vinay Pathak is an Indian actor and a theatre person born on 12 July 1968 and raised in buxar, Bihar. He is known for his comic timing. He has starred in various critically acclaimed films like "Khosla Ka Ghosla," "Bheja Fry," and Johnny Gaddaar. He has also had major supporting roles in blockbusters like "Rab Ne Bana Di Jodi."
+		</p>
+		<p>
+			<b>Prabhu Deva</b>
+			<br>
+			Prabhu Deva ( born 3 April 1973) is an Indian film director, dance choreographer and actor,[2] known for his works predominantly in Telugu,Tamil, Bollywood, Malayalam and Kannada films. In a career spanning twenty-five years, he has performed and designed a wide range of dancing styles. He has garnered two National Film Awards for Best Choreography; widely referred in the media as Indian Michael Jackson
+		</p>
+	</div>
+
+	<!--Left row start-->
+	<div class="col-xs-6 col-md-3" style="color:#B5B5B5" >
+
+		<strong>Related Search</strong>
+		<br>
+		<p>
+			<a> Amitabh Bachchan Host with the most</a>
+		</p>
+		<p>
+			<a> Amitabh Bachchan is promoting tourism </a>
+		</p>
+		<p>
+			<a> Host of Kaun Banega Crorepati.</a>
+		</p>
+
+		<div ng-controller="postMyInvent" id="postDialogue">
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="lestInvent()">
+				Launch demo modal
+			</button>
+
+			<!-- set up the modal to start hidden and fade in and out -->
+			<div id="myModal" class="modal fade"  >
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<!-- dialog body -->
+						<div class="modal-body">
+
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset()">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<h4 class="modal-title" id="myModalLabel" style="color: #676767">Post Your Invention..<span class="fa fa-lightbulb-o fa-sm"></span></h4>
+							</div>
+
+							<br>
+							<div class="animate-switch-container  slide1 " ng-switch on="select">
+
+								<div class="animate-switch invnt-slide1" ng-switch-when="default" >
+									<input type="text" class="form-control"   ng-model="user.invention" placeholder= "What is your Talent About..!!">
+
+									<!--  <div class="txttoolbar"><ul style="list-style:disc"><li><strong class="white pointer">B</strong></li><li><strong ><i class="white pointer">I</i></strong></li><li><i class=" pointer white fa fa-file-image-o"></i></li></ul></div> -->
+
+									<br>
+									<textarea id="inputtxt1" class="inputtxtC1" ng-model="user.abtinvention" name="post-text" cols="72" rows="5" tabindex="101" data-min-length=""placeholder="Say Something About Your Talent.."></textarea>
+									<br>
+									<br>
+
+									<div class="uploadFile1">
+										<label class="control-label">Upload Images</label>
+										<br>
+
+										<!--start-->
+
+										<form id="uploadImg" method="post" enctype="multipart/form-data" action="api/photos" target="upload_iframe" >
+											<input type="file" name="photo" class="filestyle" data-input="false"  style="clear: both; float: left;" onChange="angular.element(this).scope().changeImgUpload()"/>
+
+										</form>
+										<div  id="someDiv"></div>
+
+										<!--end -->
+									</div>
+									<!-- <div class="uploadFile2"><img  src="https://lh4.googleusercontent.com/-p3oAuZFd7aA/AAAAAAAAAAI/AAAAAAAAAAA/cfWpSS0geIk/photo.jpg"  height="100px"  width="100px"> </div> -->
+
+									<div class="uploadFile2">
+										<iframe  height="150px"  width="180px" name="upload_iframe" src="" id="upload_iframe"></iframe>
+									</div>
+
+								</div>
+
+								<div class="animate-switch invnt-slide2" ng-switch-when="tags" >
+
+									<div id="tagsearchselect">
+
+										<span class="selecttag"  ng-repeat="(key, value)  in totalTagSelected">{{key}}<span class="fa fa-times cancel-tag" onclick="removeTag(key)"></span></span>
+									</div>
+
+									<input type="text" class=" form-control" ng-model="user.tags"  value="" placeholder= {{postInv2}}  id="tagsearch" ng-keyup="tagSearch()" >
+
+								</div>
+
+								<div class="animate-switch invnt-slide3" ng-switch-when="review" >
+									<input type="text" class=" form-control " ng-model="user.review" value={{myValue3}} placeholder= {{postInv3}} >
+								</div>
+
+							</div>
+							<div  ng-switch on="tagstatus">
+								<span id="tag-dropdown1" class=" icon-mng pointer search-dropdown"  ng-switch-when="tagfound" >
+									<ul id="tag-dropdown2 " class="designul">
+
+										<li  ng-repeat="(key, value) in searchtagMap">
+											<a  class ="taghash"  href="#" ng-click="getTagInfo(key, value)">{{key}}</a>
+										</li>
+
+									</ul> </span>
+								<span id="tag-dropdown1" class=" icon-mng pointer search-dropdown"  ng-switch-when="tagnotfound">
+									<ul id="tag-dropdown2 " class="designul">
+										<li>
+											<span class="crttag-container"><span class="selecttag crttag" ng-bind="user.tags"></span>
+												<button class="crttagbtn btn btn-default" type="submit" title="Create Tag" ng-click="createTag()">
+													Create Tag<i class="fa fa-check-circle-o mrgnleft8"></i>
+												</button></span>
+										</li>
+									</ul> </span>
+
+							</div>
+						</div>
+						<!-- dialog buttons -->
+						<div  ng-switch on="btnOption"  >
+							<div ng-switch-when="next"  >
+								<div class="modal-footer">
+									<button type="button"  class="btn btn-primary" ng-click="next(user)">
+										Next
+									</button>
+								</div>
+							</div>
+							<div ng-switch-when="submit"  >
+								<div class="modal-footer">
+									<button type="button"  class="btn btn-primary" ng-click="submit(user)">
+										Submit
+									</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!--Left row end-->
+</div>

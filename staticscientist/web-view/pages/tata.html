@@ -1,0 +1,103 @@
+<!--Mid Row Start -->
+<div class="col-xs-6 col-md-6  container-main" id="container-mainid-tagdtl"  ng-init="initialize()">
+
+	<div class='tabs-head'>
+		<ul class='nav nav-tabs' role='tablist' id='tablist' >
+			<li ng-class="'Recent Talents'=='{{k}}' ? 'active' : ''" ng-repeat= "(k, v) in tagMp">
+				<a href='javascript:void(0)'  ng-click='getActiveTag(k)' role='tab' data-toggle='tab'> <span class='lgt-black  navtabname{{$index + 1}}'>{{v}}</span> </a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- page-container start-->
+	<div id="page-container" class="page-container">
+
+		<!-- breifDetails start-->
+		<div  ng-switch on="breifDetails">
+
+			<!--page-brief recent talent start-->
+			<div class="page-brief" ng-switch-when="RecentTalents">
+				<div class="row lgtgray-bg tag-page-style">
+					<!-- row start-->
+
+					<div class="col-xs-6 col-md-2">
+						<div class="page-brief-img-div"><img class="page-brief-img img-responsive myimg img-circle" src="http://192.168.1.5:8081/uploads/1443549055000-DSC_0677.jpg"/>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-10">
+						<div class="page-brief-title">
+							<span>{{tagName}}</span><span class="margin-left2"><a class="btn follower-a btn-circle text-uppercase" id="reply"><span class="glyphicon"></span>10K followers</a></span>
+						</div>
+						<div>
+							<p class="page-brief-desc">
+								{{pageBriefDesc}}...<a class="lgt-black pointer more" ng-click='getActiveTag("About")'>More</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- row end-->
+				<span ng-repeat="postData in tagPostList"> <p ng-bind-html="postData"></p> </span>
+			</div>
+			<!--page-brief recent talent  end-->
+
+			<!--page-brief about tag start-->
+			<div class="page-brief" ng-switch-when="TagPage">
+				<div class="row lgtgray-bg tag-page-style">
+					<!-- row start-->
+
+					<div class="col-xs-6 col-md-2">
+						<div class="page-brief-img-div"><img class="page-brief-img img-responsive myimg img-circle" src="http://192.168.1.5:8081/uploads/1443549055000-DSC_0677.jpg"/>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-10">
+						<div class="page-brief-title">
+							<span>{{tagName}}</span><span class="margin-left2"><a class="btn follower-a btn-circle text-uppercase" id="reply"><span class="glyphicon"></span>10K followers</a></span>
+						</div>
+						<div>
+							<p class="page-brief-desc">
+								{{pageBriefDesc}}...<a class="lgt-black pointer more" ng-click='getActiveTag("About")'>More</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- row end-->
+			</div>
+			<!--page-brief about tag end-->
+
+			<!--page-brief edit start-->
+			<div class="page-brief" ng-switch-when="Edit">
+
+				<div class="row lgtgray-bg tag-page-style">
+					<!-- row start-->
+
+					<div class="col-xs-6 col-md-2">
+						<div class="page-brief-img-div"><img class="page-brief-img img-responsive myimg img-circle" src="http://192.168.1.5:8081/uploads/1443549055000-DSC_0677.jpg"/>
+						</div>
+					</div>
+					<div class="col-xs-6 col-md-10">
+						<div class="page-brief-title">
+							<span>{{tagName}}</span><span class="margin-left2"><a class="btn follower-a btn-circle text-uppercase" id="reply"><span class="glyphicon"></span>10K followers</a></span>
+							
+						</div><br>
+						<div>
+							<p class="page-brief-desc">
+								<textarea  class="inputtxtC1" ng-model="pageBriefDesc" name="post-text" cols="55" rows="15"></textarea>
+							</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!--page-brief edit end-->
+
+		</div>
+		<!-- breifDetails end-->
+
+	</div>
+	<!-- page-container end-->
+
+</div>
+<!--Mid Row End -->

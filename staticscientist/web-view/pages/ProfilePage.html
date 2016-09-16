@@ -1,0 +1,115 @@
+<!--Mid Row Start -->
+<div class="col-xs-6 col-md-6  container-main" id="container-mainid-tagdtl"  ng-init="initialize()">
+
+	<div class='tabs-head'>
+		<ul class='nav nav-tabs' role='tablist' id='tablist' >
+			<li ng-class="'About me'=='{{k}}' ? 'active' : ''" ng-repeat= "(k, v) in tagMp">
+				<a href='javascript:void(0)'  ng-click='getActiveTag(k)' role='tab' data-toggle='tab'> <span class='lgt-black'>{{v}}</span> </a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="page-container" class="page-container">
+ 
+		<div  ng-switch on="breifDetails">
+			<div class="lgtgray-bg" ng-switch-when="About me">
+				<div> 
+
+					<div class="col-xs-6 col-md-3">
+						<div>
+
+							<img class="img-responsive  img-circle" height="118px" width="118px" src="{{profile.profilePhotoUrl}}"/>
+
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-md-9">
+						<div>
+							<p>
+								<div>
+									<span class="name-aboutme">{{profile.profileName}}</span>
+									<br>
+									<span style="color: #8C8686"><i class="fa fa-map-marker"></i><span class="margin-left2">{{profile.profileLocation}}</span></span>
+								</div>
+								<div class="margin-top1">
+									<a class="btn follower-a btn-circle text-uppercase" id="reply"><span class="glyphicon"></span>10K followers</a>
+								</div>
+							</p>
+
+						</div>
+
+					</div>
+
+				</div>
+
+				<div>
+					<div class="col-md-12">
+						<div class="light-gray comn-font padding1">
+							{{profile.profileAboutMe}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-switch-when="Edit">
+				<strong class="lgt-black" style="font-size: 21px;">Edit Your Profile</strong><i class="fa fa-hand-o-down margin-left2"></i>
+				<br>
+				<br>
+			</div>
+
+			<div class="page-brief lgtgray-bg" ng-switch-when="Edit">
+
+				<div>
+					<div class="col-md-3">
+						<div class="image-edit">
+							<div class="">
+								<img class="img-responsive  img-circle image-edit-img"  src="{{profile.profilePhotoUrl}}">
+							</div>
+							<div class="image-edit-name pointer">
+								<a>Change Photo</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<div style="padding: 1%;">
+							<label><strong>Name</strong></label><i class="fa fa-user margin-left2"></i>
+							<br>
+							<input type="text" class="form-control"   ng-model="profile.profileName" placeholder= ""/>
+						</div>
+						<div style="padding: 1%;">
+							<label><strong>Location</strong></label><i class="fa fa-map-marker margin-left2"></i>
+							<br>
+							<input type="text" class="form-control"   ng-model="profile.profileLocation" placeholder= "" value="Alok Pathak"/>
+
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="col-md-12">
+						<div class="" style="padding: 1%;">
+							<label><strong>About me</strong></label><i class="fa fa-hand-o-right margin-left2"></i><i class="fa fa-user"></i>
+							<br>
+							<textarea  class="inputtxtC1" ng-model="profile.profileAboutMe" name="post-text" cols="69" rows="8"></textarea>
+						</div>
+					</div>
+				</div>
+
+				<div class="edit-footer-submit">
+					<button type="button" class="btn btn-primary" ng-click="submit()"  ng-switch on="isSubmit">
+						<span  ng-switch-when="submit">Submit</span>
+						<span ng-switch-when="loading"><i class="fa fa-sm fa-spinner fa-pulse"></i></span>
+					</button>
+
+				
+
+				</div>
+			</div>
+
+			<span ng-repeat="postData in tagPostList"> <p ng-bind-html="postData"></p> </span>
+		</div>
+	</div>
+
+</div>
+<!--Mid Row End -->
+

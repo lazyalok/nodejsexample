@@ -1,0 +1,259 @@
+<div>
+	<div class="first">
+		<div class="modal-header">
+			<div class="padding1" style="color: #676767" class="modal-title">
+				<div class="col-md-2"><img  id="profImgLogo" class="img-responsive myimg img-circle" src={{user.photourl}} />
+				</div>
+				<div class="col-md-9 padding1 font-helvetica">
+					<h4>Welcome Alok!!..Its Time To Introduce Yourself</h4>
+				</div>
+			</div>
+		</div>
+		<br>
+
+		<div class="modal-body">
+			<div></div>
+			<div class="oneTime2 commonTime">
+				<i class="fa fa-hand-o-right float-left"></i>
+				<textarea class="inputtxtC1" rows="6" cols="50" style=" resize: none" placeholder="Say Something About Yourself..What are your Hobbies ..What you like ..What you don't etc.."></textarea>
+			</div>
+			<!--
+			<div class="oneTime3 commonTime">
+			<input type="text" class=" form-control" placeholder="Location..">
+			</div>-->
+
+		</div>
+
+		<div class="modal-footer">
+			<button type="button"  class="nextBtn btn btn-primary" ng-click="next()">
+				Next
+			</button>
+		</div>
+	</div>
+
+	<div class="second" style="display: none">
+		<div class="modal-header">
+			<div class="padding1" style="color: #676767" class="modal-title">
+				<div class="col-md-2"><img  id="profImgLogo" class="img-responsive myimg img-circle" src={{user.photourl}} />
+				</div>
+				<div class="col-md-9 padding1 font-helvetica">
+					<h4>Thanks Alok!!..Please follow atleast <i class="fa  fa-lg fa-circle-o orange" style="font-size: 30px"></i><span style="margin-left: -18px; margin-right: 9px;">3</span> tags.</h4>
+				</div>
+			</div>
+
+		</div>
+		<div class="modal-body">
+
+			<div>
+				<div class="col-md-12" style="margin-top: 28px;">
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src="images/music2.jpg" /><span class="tagname-overimg">Music</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src={{user.photourl}} /><span class="tagname-overimg">Dance</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src="images/poetry2.jpg"/><span class="tagname-overimg">Poetry</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src="images/drama.jpg" /><span class="tagname-overimg">Acting</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src="images/modeling.jpg" /><span class="tagname-overimg">Modeling</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src={{user.photourl}} /><span class="tagname-overimg">Writing</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src="images/painting.jpg"  /><span class="tagname-overimg">Painting</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src="images/photography.jpg" /><span class="tagname-overimg">Photography</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src="images/drawin.jpg" /><span class="tagname-overimg">Drawing</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+					<div class="tagimg-cover"><img  id="profImgLogo" class="tagimg img-responsive  img-circle" src={{user.photourl}} /><span class="tagname-overimg">Presentation</span>
+						<i class="checkTag fa fa-lg fa-check-circle-o"></i>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<br>
+			<!--
+			<button type="button"  class="btn btn-primary" style="margin-top: 20px; margin-right: 33px;">
+			<span class="tag-num">3</span> more tag remaining
+			</button>-->
+
+			<span  class="btn btn-primary button1" style="margin-top: 20px; margin-right: 33px; cursor:text"> <span class="tag-btn-num"></span> more tag remaining </span>
+
+			<span  class="btn btn-primary button2" style="margin-top: 20px; margin-right: 33px; display: none;">Submit</span>
+
+		</div>
+	</div>
+</div>
+<style>
+	.oneTime2 {
+		height: 153px;
+		padding: 8px;
+		border-radius: 2px;
+	}
+	.commonTime {
+		background-color: #F5F5F5;
+		width: 74%;
+		text-align: center;
+		margin-left: 16%;
+	}
+	.oneTime3 {
+		margin-top: 19px;
+		padding: 8px;
+		border-radius: 5px;
+	}
+	.tagimg {
+		float: left;
+		padding: 1%;
+		border: 1px solid #A5A5A5;
+		margin: 1%;
+		background-color: #E3E8DF;
+		cursor: pointer;
+		height: 90px;
+		width: 90px;
+	}
+	.tagimg:hover {
+		border: 1px solid orange;
+		background-color: #FFE779;
+		cursor: pointer;
+	}
+	.tagname-overimg {
+		margin-left: -79px;
+		margin-top: 60px;
+		position: absolute;
+		color: #F9F9F9;
+		font-weight: bold;
+		font-size: 11px;
+		cursor: pointer;
+	}
+	.tagimg-cover {
+		position: relative;
+		cursor: pointer;
+		float: left;
+		display: block;
+		height: 103px;
+		overflow: hidden;
+		padding: 1px;
+		margin: 3px;
+	}
+	.tagimg-cover:hover {
+		opacity: .7
+	}
+	.checkTag {
+		font-size: 38px;
+		color: #E4E4E4;
+		cursor: pointer;
+		display: none;
+		position: absolute;
+		margin-left: 30px;
+		margin-top: 31px;
+	}
+</style>
+
+<script>
+	jQuery(document).ready(function() {
+
+		var slectedTagListMp = [];
+		var count = 3;
+		jQuery('.tag-btn-num').text(count);
+
+		jQuery(".tagimg-cover").mouseover(function() {
+			if (jQuery(this).data('clicked')) {
+
+			} else {
+				jQuery(this).find(".checkTag").css("display", "block");
+			}
+
+		});
+
+		jQuery(".tagimg-cover").mouseout(function() {
+			if (jQuery(this).data('clicked')) {
+
+			} else {
+				jQuery(this).find(".checkTag").css("display", "none");
+
+			}
+		});
+
+		jQuery(".tagimg-cover").click(function() {
+			if (jQuery(this).data('clicked')) {
+				count++;
+				jQuery(this).find(".checkTag").hide();
+				jQuery(this).data('clicked', false);
+
+				var index = slectedTagListMp.indexOf(jQuery(this).text());
+				if (index > -1) {
+					slectedTagListMp.splice(index, 1);
+				}
+				btnFuntioning();
+
+			} else {
+				jQuery(this).find(".checkTag").show();
+				jQuery(this).data('clicked', true);
+				count--;
+				slectedTagListMp.push(jQuery(this).text());
+				btnFuntioning();
+			}
+		});
+
+		$(".nextBtn").click(function() {
+
+			$(".first").hide();
+			$(".second").show();
+
+		});
+
+		jQuery('.button2').on('click', function() {
+
+			//ajax call to server update tags for user
+			//and show home page of user
+			//with tag details on left side update these tags with there ids in map and put in session.
+			//when user update tags ..update in db as well as in session.
+			$.ajax({
+				method : "POST",
+				url : "followTagFirstTime",
+				data : {
+					'tagsSelected[]' : slectedTagListMp
+				}
+			}).done(function(msg) {
+				window.location.replace("http://192.168.1.5:8081/homeone");
+			});
+
+		});
+
+		function btnFuntioning() {
+			if (slectedTagListMp.length >= 3) {
+				//submit btn show
+				jQuery('.button1').hide();
+				jQuery('.button2').show();
+			} else {
+				//submit btn hide  show number button
+				jQuery('.button2').hide();
+				jQuery('.button1').show();
+				jQuery('.tag-btn-num').text(count);
+			}
+		}
+
+	});
+
+</script>

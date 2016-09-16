@@ -1,0 +1,14 @@
+["undertaker","khali","visky","facino","musicmania"]
+55fe7ec77f9106f420ec9e90
+ Tag Exist Delete process started...
+upated successfully..[object Object]
+
+F:\node_js\staticscientist\mongoose-db\DaoImpl\UserDaoImpl.js:186
+                                var usrIdsUpdt = tagmodel.userIds;
+                                                         ^
+TypeError: Cannot read property 'userIds' of null
+    at Query.<anonymous> (F:\node_js\staticscientist\mongoose-db\DaoImpl\User
+Impl.js:186:30)
+    at F:\node_js\node_modules\mongoose\node_modules\kareem\index.js:177:19
+    at F:\node_js\node_modules\mongoose\node_modules\kareem\index.js:109:16
+    at process._tickCallback (node.js:419:13)

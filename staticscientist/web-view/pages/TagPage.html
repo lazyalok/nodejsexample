@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title>Thoughts123</title>
+		<link rel="stylesheet" href="/all-js-and-css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="/common.css"/>
+		<script type="text/javascript" src="/all-js-and-css/jquery.min.js"></script>
+		<script type="text/javascript" src="/all-js-and-css/jquery-ui.min.js"></script>
+		<script src="/all-js-and-css/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular-animate.min.js"></script>
+		<script src="/all-js-and-css/bootstrap-filestyle.min.js"></script>
+
+		<script src="/HomePagePolling.js"></script>
+		<script src="/TagPage.js"></script>
+		<script src="/searchModule.js"></script>
+
+	</head>
+	<body>
+		<header  ng-include="/header"></header>
+		<div class="container">
+			<div class="row" >
+				<div class="col-xs-6 col-md-3" id="lft-cont"></div>
+				<div class="col-xs-6 col-md-6  container-main" id="container-mainid"  ng-controller="TagModuleCntrl" ng-init="initialize()">
+
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+			</div>
+		</div>
+	</body>
+<!--
+	<script>
+		angular.element(document).ready(function() {
+
+			var dvFirst = document.getElementById('searchdiv');
+			var dvSecond = document.getElementById('container-mainid');
+
+			angular.bootstrap(dvFirst, ['SearchApp']);
+			angular.bootstrap(dvSecond, ['TagModule']);
+
+		});
+	</script>-->
+
+
+</html>
